@@ -1,0 +1,96 @@
+/* Register and Login Form */
+fieldset {
+    margin-top: 10px !important;
+    padding: 10px !important;
+}
+
+legend {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 5px 5px 10px !important;
+    background-color: #ffffff;
+}
+
+.register-form label {
+    margin-left: 50px;
+    width: 25%;
+    display: inline-block;
+}
+
+.register-form input {
+    width: 65%;
+    display: inline-block;
+}
+
+.login-form label {
+    margin-left: 50px;
+    width: 25%;
+    display: inline-block;
+}
+
+.login-form input {
+    width: 65%;
+    display: inline-block;
+}
+
+/* Books Home */
+
+.container-fluid .recent-books-review,
+.other-books-review {
+    padding: 70px;
+}
+
+.container-fluid .show-books,
+.form-group {
+    padding: 30px 40px;
+}
+
+.container-fluid textarea {
+    resize: none;
+}
+
+/* Add Book  */
+.container h3 {
+    margin-top: 20px;
+}
+
+.container form #author {
+    margin-top: 10px;
+}
+
+.container form textarea {
+    resize: none;
+}
+
+.container form .rating {
+    width: 30%;
+}
+
+/* Book Info Page */
+.container-fluid .header {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.row .review,
+.add-review {
+    padding: 20px 50px;
+}
+
+.review .review-info {
+    padding: 20px;
+}
+
+.review .btn-danger {
+    margin-bottom: 10px;
+}
+
+.add-review select {
+    width: 20%;
+}
+
+/* User Info */
+.user-info,
+.recent-book-review {
+    padding: 30px;
+}

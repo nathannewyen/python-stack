@@ -1,0 +1,108 @@
+body {
+    padding: 30px;
+}
+
+/* Register Form */
+#register,
+#login {
+    padding: 0px 50px;
+    width: 45%;
+    display: inline-block;
+}
+
+
+h1 {
+    padding: 20px 0px;
+}
+
+
+#register .firstname {
+    width: 10%;
+    display: inline-block;
+}
+
+#register #input-fname {
+    width: 40%;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#register .lastname {
+    width: 10%;
+    display: inline-block;
+}
+
+#register #input-lname {
+    width: 40%;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#register .reg-email {
+    width: 10%;
+    display: inline-block;
+}
+
+#register #reg-input-email {
+    display: inline-block;
+    width: 40%;
+    margin-left: 20px;
+}
+
+#register .password {
+    width: 10%;
+    display: inline-block;
+}
+
+#register #reg-input-password {
+    display: inline-block;
+    width: 40%;
+    margin-left: 20px;
+}
+
+#confirm-password {
+    display: inline-block;
+    width: 40%;
+    margin-left: 20px;
+}
+
+#register #btnreg {
+    margin-left: 44%;
+}
+
+
+/* Login Form */
+#login {
+    vertical-align: top;
+}
+
+#login .login-email {
+    width: 10%;
+    display: inline-block;
+}
+
+#login #input-login-email {
+    width: 50%;
+    display: inline-block;
+    margin-left: 10%;
+}
+
+#login .login-password {
+    width: 10%;
+    display: inline-block;
+}
+
+#login #input-login-password {
+    width: 50%;
+    display: inline-block;
+    margin-left: 10%;
+}
+
+#login #btnlogin {
+    margin-left: 64%;
+}
+
+.logout {
+    font-size: 20px;
+    float: right;
+}

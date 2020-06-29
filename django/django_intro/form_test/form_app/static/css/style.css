@@ -1,0 +1,25 @@
+.container {
+    margin-top: 20px;
+}
+
+.form-group .label-name {
+    width: 15%;
+    display: inline-block;
+}
+
+h3 {
+    padding: 10px 0px;
+}
+
+.form-group .input-info {
+    width: 84%;
+    display: inline-block;
+}
+
+.button {
+    text-align: right;
+}
+
+.btn {
+    margin-top: 10px;
+}

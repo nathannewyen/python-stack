@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Test App</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/register/" class="nav-link text-primary">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/signin/" class="nav-link text-primary">Sign in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Nav -->
+    <div class="container">
+        <div class="welcome bg-light">
+            <h3>Welcome to the Test</h3>
+            <p>We're going to build a cool application using a MVC framework! This
+                application was build with the Village888 folks!
+            </p>
+            <button type="button" class="btn btn-primary shadow">Start</button>
+        </div>
+
+        <div class="options">
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Manage Users</h4>
+                        <p class="card-text">Using this application, you'll learn how to
+                            add, remove, and edit users for the application
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Leave Message</h4>
+                        <p class="card-text">Users will be able to leave a message
+                            to another user using this application.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Edit User Information</h4>
+                        <p class="card-text">Admins will be able to edit another user's information (email, phone
+                            number)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

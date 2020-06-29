@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <title>Add Book and Review</title>
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/user/{{user.id}}">Welcome, {{user.name}}!</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/books/" class="nav-link text-primary">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout/" class="nav-link text-primary">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Nav -->
+
+    <div class="container-fluid">
+        <div class="header">
+            <h3>{{book.title}}</h3>
+            <p><b>Author:
+                    {% if not book_authors %}
+                    <h5>No Author!</h5>
+                    {% else %}
+
+                    {% if book_authors %}
+                    {% for author in book_authors %}
+                    {{ author.name }}
+                    {% endfor %}
+                    {% endif %}
+                    {% endif %}
+                </b></p>
+        </div>
+
+
+        <div class="row">
+            <!-- Reviews -->
+            <div class="col review" id="review">
+                <h4>Reviews:</h4>
+                {% if not reviews %}
+                <h5>No reviews!</h5>
+                {% else %}
+                {% for review in reviews %}
+                <div class="review-info border-top clearfix">
+                    <p>Rating: {{review.rating}} stars</p>
+                    <p>{{review.user.name}} says: {{review.review}}</p>
+                    <p>
+                        <i>{{review.created_at}}</i>
+                        {% if review.user.id == user.id %}
+                        <button type="submit" class="btn btn-danger float-right">Delete</button>
+                        {% endif %}
+                    </p>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <!-- End of Reviews -->
+
+
+
+            <!-- Add A Review -->
+            <div class="col add-review">
+                <h4>Add a Review:</h4>
+                <form action="/books/{{book.id}}/add/review/process/" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <textarea class="form-control" name="review" id="add-review" rows="7"></textarea>
+                    </div>
+                    <div class="form-group row">
+                        <label for="title" class="col-sm-2 col-form-label">Rating:</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select rating" name="rating">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary float-right">Submit Review</button>
+                    </div>
+                </form>
+            </div>
+            <!-- End of add review form -->
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

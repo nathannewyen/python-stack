@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+
+
+<body>
+
+    <table>
+        {% for j in range(columns): %}
+        <tr>
+        {% for i in range(rows): %}
+            <td class="color1" style="--color: {{pickcolor1}}"></td>
+            <td class="color2" style="--color: {{pickcolor2}}"></td>
+        {% endfor %}
+        </tr>
+        <tr>
+        {% for i in range(rows): %}
+            <td class="color2" style="--color: {{pickcolor2}}"></td>
+            <td class="color1" style="--color: {{pickcolor1}}"></td>
+        {% endfor %}
+        </tr>
+        {%endfor%}
+    </table>
+
+
+
+
+
+    <h3>Enter your url /rows/columns/color1/color2 to fill the checkerboard</h3>
+
+
+
+
+</body>
+
+</html>

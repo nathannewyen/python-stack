@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+    <title>Result</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="container bg-light">
+            <h1>Submmited Info</h1>
+
+            <div class="name">
+                <span class="prefix">Name: </span> {{ name }}
+            </div>
+            <div class="location">
+                <span class="prefix">Dojo Location: </span>{{ location }}
+            </div>
+            <div class="fav_lang">
+                <span class="prefix">Favorite Language: </span>{{ fav_language }}
+            </div>
+            <div class="comment">
+                <span class="prefix">Comment: </span>{{ comment }}
+            </div>
+            <form class="button" action="/" method="post">
+                <button type="submit" value="submit" class="btn btn-primary">Go back</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

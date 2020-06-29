@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="{% static "js/app.js" %}"></script>
+
+    <script>
+      $(document).ready(function () {
+        $('#clearbtn').click(function() {
+          $('#activityLog').val('');
+          counter = '';
+        });
+        
+        var $textarea = $('#activityLog');
+        $textarea.scrollTop($textarea[0].scrollHeight)
+      });
+    </script>
+    <title>Ninja Gold</title>
+  </head>
+
+  <body class="bg-light">
+    <div class="container-fluid">
+      <div class="container">
+        <h1>Ninja Gold</h1>
+        <div class="money-info">
+          <p class="your-gold">Your Gold:</p>
+          <p
+            class="gold-info bg-primary text-light table-bordered rounded shadow"
+          >
+            <img
+              class="coin"
+              src="https://i.ya-webdesign.com/images/pixel-coin-png-4.gif"
+              alt="coin"
+              width="40"
+            />
+            {{request.session.earn_gold}}
+          </p>
+        </div>
+
+        <!-- Find Gold -->
+        <div class="card find-gold rounded">
+          <div class="card-body">
+            <h5 class="card-title">Farm</h5>
+            <p class="card-text">(earns 10-20 golds)</p>
+            <form action="/increase" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="space" value="0" />
+              <button type="submit" class="btn btn-warning button">Find Gold</button>
+            </form>
+          </div>
+        </div>
+        <div class="card find-gold rounded">
+          <div class="card-body">
+            <h5 class="card-title">Cave</h5>
+            <p class="card-text">(earns 5-10 golds)</p>
+            <form action="/increase" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="space" value="1" />
+              <button type="submit" class="btn btn-warning">Find Gold</button>
+            </form>
+          </div>
+        </div>
+        <div class="card find-gold rounded">
+          <div class="card-body">
+            <h5 class="card-title">House</h5>
+            <p class="card-text">(earns 2-5 golds)</p>
+            <form action="/increase" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="space" value="2" />
+              <button type="submit" class="btn btn-warning">Find Gold</button>
+            </form>
+          </div>
+        </div>
+        <div class="card find-gold rounded">
+          <div class="card-body">
+            <h5 class="card-title">Casino</h5>
+            <p class="card-text">(earns/takes 0-50 golds)</p>
+            <form action="/increase" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="space" value="3" />
+              <button type="submit" class="btn btn-warning">Find Gold</button>
+            </form>
+          </div>
+        </div>
+        <!-- End of Find Gold -->
+        <!-- Activities -->
+        <form action="/increase" method="POST" class="activities">
+          {% csrf_token %}
+          <h4>Activities:</h4>
+          <div class="form-group">
+            <textarea
+              class="form-control shadow resize"
+              id="activityLog"
+              rows="12"
+            >{{request.session.activity_log}}
+            </textarea>
+          </div>
+        </form>
+        <div class="clear-form">
+          <button type="button" class="btn btn-success" id="clearbtn">
+            Clear Activities
+          </button>
+        </div>
+        <form action="/decrease" method="POST" class="reset-form">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger reset-gold">
+            Decrease Gold
+          </button>
+        </form>
+
+        <!-- End of Activities -->
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

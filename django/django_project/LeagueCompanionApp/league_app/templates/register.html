@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap linked -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <title>Registration</title>
+</head>
+
+<body>
+
+
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0 fixed-top">
+        <a href="/" class="navbar-brand">League Companion</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="https://play.na.leagueoflegends.com/en_US" class="nav-link">Play Today!</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/champions/" class="nav-link">Champions</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form">
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                {% if "register" in message.tags %}
+                <li style="color: red;">{{ message }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form action="/post_register/" name="registration" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="form-group">First Name:</label>
+                    <input type="text" class="form-control" id="form-group" placeholder="--> First Name"
+                        name="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="form-group">Last Name:</label>
+                    <input type="text" class="form-control" id="form-group" placeholder="--> Last Name" name="lastname">
+                </div>
+                <div class="form-group">
+                    <label for="form-group">Username:</label>
+                    <input type="text" class="form-control" id="form-group" placeholder="--> Username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="form-group">Password: (Needs to be 8 characters or more.</label>
+                    <input type="password" class="form-control" id="form-group" placeholder="--> Password"
+                        name="password">
+                </div>
+                <div class="form-group">
+                    <label for="form-group">Confirm Password:</label>
+                    <input type="password" class="form-control" id="form-group" placeholder="--> Retype Password"
+                        name="password_confirm">
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

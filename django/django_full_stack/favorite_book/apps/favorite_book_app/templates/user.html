@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title> </title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/user/{{user.id}}"
+        >Welcome, {{user.fname}} {{user.lname}}!</a
+      >
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/books/" class="nav-link text-primary">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="/logout/" class="nav-link text-primary">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="user">
+      <div class="container-fluid">
+        <h3>{{user.fname}} Favorites Book</h3>
+        {% for book in book_user_like %}
+        <ul class="list-group">
+          <li class="list-group-item">{{book.b_like.title}}</li>
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

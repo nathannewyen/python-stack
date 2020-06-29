@@ -1,0 +1,20 @@
+.container-fluid {
+    padding: 30px;
+}
+
+h3 {
+    text-align: center;
+    padding: 10px 0px;
+}
+
+p {
+    padding: 20px 0px 10px;
+}
+
+form {
+    display: inline-block;
+}
+
+.btn {
+    display: inline-block;
+}

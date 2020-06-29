@@ -1,0 +1,43 @@
+.btn .link {
+    text-decoration: none;
+}
+
+/* Wall Page */
+.container {
+    padding: 20px 0px;
+}
+
+.container .post-a-message .text-post-comment {
+    resize: none;
+}
+
+
+.container .post-message-btn {
+    margin-top: 10px;
+}
+
+.container .post-a-message .post-a-comment {
+    margin-top: 60px;
+}
+
+.container .post-a-message .user-comment,
+.my-comment {
+    padding: 0px 20px;
+}
+
+.container .post-a-message .post-a-comment .post-comment-btn {
+    margin-top: 10px;
+}
+
+.container .title-comment {
+    margin-top: 10px;
+}
+
+.container .btn-login {
+    margin-top: 10px;
+}
+
+.container .post-a-message .delete-btn,
+.my-comment {
+    display: inline-block;
+}

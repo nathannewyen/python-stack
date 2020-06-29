@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <title>Books Info</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="book-info">
+      {% for i in all_books %} {%if i.id == id %}
+      <h1>{{i.title}}</h1>
+      {%endif%} {%endfor%}
+      <div class="idinfo">
+        <p class="id">ID:</p>
+        {% for i in all_books %} {%if i.id == id %}
+        <span class="input-id">
+          {{i.id}}
+        </span>
+        {%endif%} {%endfor%}
+      </div>
+      <div class="desc-info">
+        <p class="desc">Description:</p>
+
+        {% for i in all_books %} {%if i.id == id %}
+        <span class="input-desc"><b>{{i.desc}}</b></span>
+        {%endif%} {%endfor%}
+      </div>
+      <div class="author-name">
+        <p class="authors">Autho rs:</p>
+        {% for i in all_books %} {% if id == i.id %}
+        <ul>
+          {%for j in authors_name %}
+          <li>{{j.first_name}} {{j.last_name}}</li>
+          {%endfor%}
+        </ul>
+        {%endif%} {%endfor%}
+        <form action="/book_to_author/{{id}}" method="POST">
+          {% csrf_token %}
+          {% for i in all_books %} {% if id == i.id %}
+          <select class="custom-select" name="author" id="select-authors">
+            {% for j in all_authors %}
+            {% if j not in authors_name %}
+            <option value="{{j.id}}">{{j.first_name}} {{j.last_name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+          {%endif%} {%endfor%}
+
+
+
+          <button type="submit" class="btn shadow btn-primary" id="addbtn">
+            Add
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

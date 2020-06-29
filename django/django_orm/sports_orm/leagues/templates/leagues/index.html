@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sports Leagues</title>
+  </head>
+
+  <body>
+    <h1>...all teams in the Atlantic Soccer Conference</h1>
+    <ol>
+      <li>{{soccer_atlanta.team_name}}</li>
+    </ol>
+
+    <h1>...all (current) players on the Boston Penguins</h1>
+    <ol>
+      {% for player in boston_peguins %}
+      <li>{{player.first_name}} {{player.last_name}}</li>
+      {%endfor%}
+    </ol>
+
+    <h1>
+      ...all (current) players in the International Collegiate Baseball
+      Conference
+    </h1>
+
+    <ol>
+      {%for player in team_baseball %}
+      <li>{{player.first_name}} {{player.last_name}}</li>
+      {%endfor%}
+    </ol>
+
+    <h1>
+      ...all (current) players in the American Conference of Amateur Football
+      with last name "Lopez"
+    </h1>
+    <ol>
+      {%for player in team_football%}
+      <li>{{player.first_name}} {{player.last_name}}</li>
+      {%endfor%}
+    </ol>
+
+    <h1>...all football players</h1>
+    <ol>
+      <li>Hello</li>
+    </ol>
+  </body>
+</html>

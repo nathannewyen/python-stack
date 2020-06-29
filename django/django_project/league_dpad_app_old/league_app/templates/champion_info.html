@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/champion_info.css' %}">
+    {% for champ in champ_data %}
+    {% if champ.id == id %}
+    <title>{{champ.id}}</title>
+    {% endif %}
+    {% endfor %}
+</head>
+
+<body>
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0 fixed-top">
+        <a href="/" class="navbar-brand">League Companion</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                <li class="nav-item">
+                    <a href="/user/{{loggedinUser.id}}/" class="nav-link">Profile</a>
+                </li>
+                <a href="https://play.na.leagueoflegends.com/en_US" class="nav-link">Play Today!</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/champions/" class="nav-link">Champions</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout/" class="nav-link">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Champions of the Rift</h1>
+            <p class="lead">Your Champion awaits!</p>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="container">
+            {% for champ in champ_data %}
+            {% if champ.id == id %}
+            <div class="card border-0">
+                <img class="card-image"
+                    src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{champ.id}}_0.jpg"
+                    alt="{{champ.image.full}}">
+                <div class="card-img-overlay text-center info">
+
+                    <p class="champ-name"><i> {{champ.id}}</i></p>
+                </div>
+            </div>
+
+            <p><b>{{champ.title}}</b></p>
+            <p>Description: {{champ.blurb}}</p>
+            <p>Info:
+                <span> Attack: {{champ.info.attack}}</span>
+                <span> Defense: {{champ.info.defense}}</span>
+                <span> Magic: {{champ.info.magic}}</span>
+            </p>
+            <p>
+                Type:
+                {% for type in champ.tags %}
+                {{type}}
+                {% endfor %}
+            </p>
+
+            <p>
+                <h5>Stats:</h5>
+                <p>HP:{{champ.stats.hp}}</p>
+                <p>HP gain per level: {{champ.stats.hpperlevel}}</p>
+                <p>Movespeed: {{champ.stats.movespeed}}</p>
+                <p>Armor: {{champ.stats.armor}}</p>
+                <p>Attack Damage: {{champ.stats.attackdamage}}</p>
+                <p>Attack Damage Per Level: {{champ.stats.attackdamageperlevel}}</p>
+                <p>Attack Speed Per Level: {{champ.stats.attackspeedperlevel}}</p>
+            </p>
+
+            <form action="/champions/{{champ.id}}/add/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="name" value="{{champ.id}}">
+                <button type="submit" class="btn btn-info">Add</button>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    {% if "add_error" in message.tags %}
+                    <li class="text-danger">{{ message }}</li>
+                    {%endif%}
+                    {% endfor %}
+                </ul>
+                {%endif%}
+            </form>
+
+            {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+</body>
+
+</html>

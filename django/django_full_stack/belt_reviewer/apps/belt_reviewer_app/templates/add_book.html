@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <title>Add Book</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/user/{{user.name}}">Welcome, {{user.name}}!</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/books/" class="nav-link text-primary">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout/" class="nav-link text-primary">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h3>Add a New Book Title and a Review:</h3>
+
+        <form action="/books/add/process/" method="post">
+            {% csrf_token %}
+            <!-- Book Title -->
+            <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">Book Title:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="title" class="form-control" id="title" />
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        {% if "title_error" in message.tags %}
+                        <li class="text-danger">{{ message }}</li>
+                        {%endif%}
+                        {% endfor %}
+                    </ul>
+                    {%endif%}
+                </div>
+            </div>
+            <!-- End of Book Title -->
+
+            <!-- Author -->
+            <div class="form-group row">
+                <label for="author" class="col-sm-2 col-form-label">Author:</label>
+                <div class="col-sm-10">
+                    <select class="custom-select" name="exist_author">
+                        <option selected>Select Author</option>
+                        {% for author in authors %}
+                        <option value="{{ author.name }}">{{ author.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="text" name="new_author" class="form-control input-author" id="author" />
+                </div>
+            </div>
+            <!-- End of Author -->
+
+            <!-- Review -->
+            <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">Review:</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="review" id="other-books" rows="6" cols="70"></textarea>
+                </div>
+            </div>
+            <!-- End of Review -->
+
+            <!-- Rating -->
+            <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">Rating:</label>
+                <div class="col-sm-10">
+                    <select class="custom-select rating" name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+            <!-- End Rating -->
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

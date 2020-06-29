@@ -1,0 +1,203 @@
+/* Book CSS *******/
+/* Add book */
+.add-book {
+    padding: 20px;
+    margin-top: 30px;
+    width: 45%;
+    display: inline-block;
+}
+
+.add-book h1 {
+    margin-left: 40px;
+    padding: 5px 0px 20px;
+}
+
+.add-book label {
+    margin: 10px 0px 0px 40px;
+}
+
+.add-book #title {
+    width: 15%;
+    display: inline-block;
+}
+
+.add-book #input-title {
+    width: 45%;
+    display: inline-block;
+}
+
+.add-book #desc {
+    width: 15%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.add-book #input-desc {
+    width: 45%;
+    resize: none;
+    display: inline-block;
+}
+
+
+.add-book #addbtn {
+    margin-left: 19%;
+    padding: 10px 35px;
+}
+
+/* End of Add book */
+
+/* Book Info */
+
+.book-info {
+    margin: 50px;
+    margin-top: 30px;
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* End of Book info */
+/* End off Book CSS *******/
+
+/* Add Authors CSS ********/
+/* Add Author */
+.add-author {
+    width: 45%;
+    padding: 20px;
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.add-author h1 {
+    margin-left: 40px;
+    padding: 5px 0px 20px;
+}
+
+.add-author label {
+    margin: 10px 0px 0px 40px;
+}
+
+.add-author #firstname,
+#lastname {
+    width: 15%;
+}
+
+.add-author #input-firstname,
+#input-lastname {
+    display: inline-block;
+    width: 45%;
+}
+
+.add-author #notes {
+    width: 15%;
+    resize: none;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.add-author #input-notes {
+    resize: none;
+    width: 45%;
+    display: inline-block;
+}
+
+.add-author #addbtn {
+    margin-left: 13.5%;
+    padding: 10px 35px;
+
+}
+
+/* End of Add Author */
+
+/* Author info */
+.author-info {
+    margin-top: 30px;
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+/* End of Author info */
+/* End of Authors CSS *********/
+
+
+/* Book info Page */
+
+.book-info h1 {
+    margin-bottom: 50px;
+}
+
+.book-info .id {
+    display: inline-block;
+}
+
+
+.book-info .desc {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.book-info span {
+    display: inline-block;
+}
+
+
+
+.book-info #select-authors {
+    display: inline-block;
+    width: 45%;
+}
+
+
+.book-info #addbtn {
+    padding: 6px 35px;
+    margin-left: 30px;
+}
+
+/* End of Book Info Page */
+
+/* User Info page */
+
+
+.user-info {
+    margin: 50px;
+    margin-top: 30px;
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+.user-info h1 {
+    margin-bottom: 50px;
+}
+
+.user-info .id {
+    display: inline-block;
+}
+
+
+.user-info .notes {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.user-info .input-notes {
+    width: 45%;
+}
+
+.user-info span {
+    width: 45%;
+    display: inline-block;
+}
+
+.user-info #select-books {
+    display: inline-block;
+    width: 45%;
+}
+
+.user-info #addbtn {
+    padding: 6px 35px;
+    margin-left: 35px;
+}
+
+/* End of User info page */

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <style>
+  
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: {{pickcolor}};
+      margin: 20px;
+      display: inline-block;
+    }
+    
+    .blue {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      margin: 20px;
+      display: inline-block;
+    }
+
+  </style>
+
+  <title>Blog</title>
+
+
+
+</head>
+
+<body>
+<h1>Welcome</h1>
+  {%for i in range(times): %}
+     <div class="blue"></div>
+  {%endfor%}
+
+
+
+  {%for i in range(times): %}
+    {% if times == "x"%}
+      <div class="blue"></div>
+
+    {% else %}
+      <div class="box"></div>
+    {% endif %}
+  {%endfor%}
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+table tr td {
+    width: 20px;
+    height: 20px;
+}
+
+
+.color1 {
+    background-color: var(--color);
+    border: 1px solid black;
+}
+
+.color2 {
+    background-color: var(--color);
+    border: 1px solid black;
+}

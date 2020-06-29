@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Destination</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/travels/" class="nav-link text-primary">Home</a></li>
+            <li class="nav-item"><a href="/logout/" class="nav-link text-primary">Log out</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="destination">
+            <h3>{{trip.destination}}</h3>
+            <p>Plan By: {{trip.plan_by.name}}</p>
+            <p>Description: {{trip.description}}</p>
+            <p>Travel Date From: {{trip.travel_from}}</p>
+            <p>Travel Date End: {{trip.travel_to}}</p>
+        </div>
+
+        <div class="other-user-trip">
+            <h3>Other user's joining trip:</h3>
+            {% for user in user_join %}
+            <p>{{user.name}}</p>
+            {%endfor%}
+        </div>
+    </div>
+</body>
+
+</html>

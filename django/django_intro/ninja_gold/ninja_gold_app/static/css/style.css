@@ -1,0 +1,48 @@
+.container-fluid {
+  padding: 30px 0px;
+}
+
+.your-gold {
+  display: inline-block;
+}
+
+.coin {
+  vertical-align: middle;
+  padding: 0px 0px 3px;
+  display: inline-block;
+}
+
+.gold-info {
+  margin: 20px 0px 0px 20px;
+  border: 2px;
+  padding: 5px 10px;
+  display: inline-block;
+}
+
+
+.container-fluid .container .card {
+  margin-top: 30px;
+  width: 24%;
+  display: inline-block;
+}
+
+
+.activities {
+  margin-top: 40px;
+}
+
+#activityLog {
+  color: red;
+  resize: none;
+  text-align: left;
+}
+
+.reset-form {
+  margin-left: 30px;
+  display: inline-block;
+}
+
+
+.clear-form {
+  display: inline-block;
+}

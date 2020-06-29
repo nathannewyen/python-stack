@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Login/ Registration</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <h1>Welcome</h1>
+        <div class="row">
+            <!-- Register Form -->
+            <div class="col register-form">
+                <form action="/register/" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="border bg-light">
+                        <legend>
+                            <h3 class="text-center"> Register </h3>
+                        </legend>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" class="form-control" id="name" />
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                {% if "name_error" in message.tags %}
+                                <li class="text-danger">{{ message }}</li>
+                                {%endif%}
+                                {% endfor %}
+                            </ul>
+                            {%endif%}
+                        </div>
+                        <div class="form-group">
+                            <label for="alias">Alias:</label>
+                            <input type="text" name="alias" class="form-control" id="reg-alias" />
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                {% if "alias_error" in message.tags %}
+                                <li class="text-danger">{{ message }}</li>
+                                {%endif%}
+                                {% endfor %}
+                            </ul>
+                            {%endif%}
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" name="reg_email" class="form-control" id="reg-email" />
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                {% if "reg_email_error" in message.tags %}
+                                <li class="text-danger">{{ message }}</li>
+                                {%endif%}
+                                {% endfor %}
+                            </ul>
+                            {%endif%}
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" name="reg_password" class="form-control" id="reg-password" />
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                {% if "reg_password_error" in message.tags %}
+                                <li class="text-danger">{{ message }}</li>
+                                {%endif%}
+                                {% endfor %}
+                            </ul>
+                            {%endif%}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password:</label>
+                            <input type="password" name="confirm-password" class="form-control" id="confirm-password" />
+                        </div>
+                        <div class="form-group clearfix">
+                            <button type="submit" class="btn btn-primary float-right shadow">
+                                Register
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <!-- Login Form -->
+            <div class="col login-form">
+                <form action="/login/" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="border bg-light">
+                        <legend>
+                            <h3 class="text-center"> Login </h3>
+                        </legend>
+                        <div class="form-group">
+                            <label for="login_username">Email:</label>
+                            <input type="email" name="login_email" class="form-control" id="login-email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="login_password">Password:</label>
+                            <input type="password" name="login_password" class="form-control" id="login-password" />
+                        </div>
+                        <div class="form-group clearfix">
+                            <button type="submit" class="btn btn-primary float-right shadow">
+                                Login
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

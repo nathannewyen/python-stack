@@ -1,0 +1,30 @@
+body {
+    color: white;
+}
+
+
+.container-fluid {
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+#number {
+    color: black;
+    margin-top: 10px;
+    border: none;
+}
+
+.button {
+    color: white;
+    padding: 5px 30px;
+    margin-top: 10px;
+    border: none;
+}
+
+.rightnumber {
+    background-color: white;
+    color: black;
+    margin-top: 10px;
+}

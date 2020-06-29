@@ -1,0 +1,26 @@
+.container {
+    margin-top: 100px;
+}
+
+div {
+    padding: 10px;
+}
+
+.prefix {
+    display: inline-block;
+    width: 300px;
+}
+
+form {
+    text-align: right;
+    padding: 10px;
+}
+
+div .comment {
+    margin-bottom: 100px;
+}
+
+h1 {
+    text-decoration: underline;
+    padding: 10px;
+}

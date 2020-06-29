@@ -1,0 +1,23 @@
+body {
+    background-color: #0b0b23;
+    color: white;
+}
+
+
+#mainNavbar {
+    text-decoration: underline;
+    background-color: #17172e;
+    opacity: 0.8;
+    text-decoration: none;
+
+}
+
+#mainNavbar a {
+    color: white;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+.container-fluid .user-champ-favorite {
+    display: inline-block;
+}

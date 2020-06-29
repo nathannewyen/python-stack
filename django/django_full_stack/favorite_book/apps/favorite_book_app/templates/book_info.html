@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <title>Favorites Books</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/user/{{user.id}}">Welcome, {{user.fname}} {{user.lname}}!</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="/books/" class="nav-link text-primary">Home</a></li>
+                <li class="nav-item"><a href="/logout/" class="nav-link text-primary">Log out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid book-info">
+        <div class="row">
+            <div class="col">
+                <h3>{{book.title}}</h3>
+                <p>Added by: {{book.uploaded_by.fname}} </p>
+                <p>Added on: {{book.created_at}} </p>
+                <p>Last updated on: {{book.updated_at}}</p>
+                </p>
+                {% if user.id  == book.uploaded_by.id%}
+                <form action="/books/{{book.id}}/update/" method="post" class="clearfix">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="description" class="col-sm-2 col-form-label col">Description:</label>
+                        <textarea class="form-control description" name="description" id="description"
+                            placeholder="{{book.description}}" rows="5"></textarea>
+                    </div>
+                    <div class="form-group float-right">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+                <div class="form-group float-right">
+                    <a href="/books/{{book.id}}/delete/">
+                        <button type="submit" class="btn btn-danger"> Delete
+                        </button>
+                    </a>
+                </div>
+                {%endif%}
+            </div>
+
+            <div class="col who-like">
+                <h3>Users Who Like This Book:</h3>
+                {% for user in user_who_like %}
+                <ul>
+                    <li> {{user.u_like.fname}} </li>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

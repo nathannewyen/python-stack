@@ -1,0 +1,69 @@
+/* Register and Login Form */
+fieldset {
+    margin-top: 10px !important;
+    padding: 10px !important;
+}
+
+legend {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 5px 5px 10px !important;
+    width: 10% !important;
+    background-color: #ffffff;
+}
+
+.register-form label {
+    margin-left: 50px;
+    width: 20%;
+    display: inline-block;
+}
+
+.register-form input {
+    width: 60%;
+    display: inline-block;
+}
+
+.login-form label {
+    margin-left: 50px;
+    width: 20%;
+    display: inline-block;
+}
+
+.login-form input {
+    width: 60%;
+    display: inline-block;
+}
+
+
+/* Travel Dashboard */
+.container-fluid .travel-dashboard {
+    padding: 40px;
+}
+
+.container-fluid .travel-dashboard h3 {
+    margin: 5px 0px 25px;
+}
+
+.container-fluid table {
+    width: 70%;
+}
+
+.container-fluid .travel-dashboard .other-schedule {
+    margin-top: 60px;
+}
+
+.container-fluid .add-travel-btn {
+    margin-top: 20px;
+}
+
+/* Destination */
+.container-fluid .destination,
+.other-user-trip {
+    padding: 30px;
+}
+
+/* Add Trip */
+.container-fluid .add-trip {
+    padding: 60px;
+    width: 50%;
+}

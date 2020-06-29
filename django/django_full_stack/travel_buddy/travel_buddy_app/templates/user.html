@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Travel Dashboard</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="#" class="nav-link text-primary">Home</a></li>
+            <li class="nav-item"><a href="/logout/" class="nav-link text-primary">Log out</a></li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <div class="travel-dashboard">
+            <div class="your-schedule">
+                <h3>Hello {{user.name}}</h3>
+                <p>Your Trip Schedules</p>
+                <table class="table border">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Destination</th>
+                            <th>Travel Start Date</th>
+                            <th>Travel End Date</th>
+                            <th>Plan</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trip in trip_user %}
+                        <tr>
+                            <th scope="row"><a href="">{{trip.destination}}</a></th>
+                            <td>{{trip.travel_from}}</td>
+                            <td>{{trip.travel_to}}</td>
+                            <td>{{trip.description}}</td>
+                            <td><a href="/travels/delete/{{trip.id}}"> Delete</a></td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="other-schedule">
+                <p>Other User's Travel Plans</p>
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Destination</th>
+                            <th>Travel Start Date</th>
+                            <th>Travel End Date</th>
+                            <th>Do You Want to Join?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for trip in all_trip %}
+                        <tr>
+                            <td>{{trip.plan_by.name}}</td>
+                            <th scope="row"><a href="/travels/destination/{{trip.id}}">{{trip.destination}}</a></th>
+                            <td>{{trip.travel_from}}</td>
+                            <td>{{trip.travel_to}}</td>
+                            <td><a href="/travels/join/{{trip.id}}/">Join</a></td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+            <a href="/travels/add/">
+                <button type="button" class="btn btn-primary add-travel-btn">Add Travel Plan</button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

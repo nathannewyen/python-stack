@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Register</title>
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Test App</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/signin/" class="nav-link text-primary">Sign in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Nav -->
+
+    <div class="container text-light">
+        <h3>Register</h3>
+        <div class="" id="registrationMsg"> </div>
+        <form action="/register/process/" method="post" id="reg_form">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="reg_email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" name="reg_email" class="form-control" id="reg_email">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        {% if "reg_email_error" in message.tags %}
+                        <li class="text-danger">{{ message }}</li>
+                        {%endif%}
+                        {% endfor %}
+                    </ul>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="reg_fname" class="col-sm-2 col-form-label">First Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="first_name" class="form-control" id="reg_fname">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        {% if "first_name_error" in message.tags %}
+                        <li class="text-danger">{{ message }}</li>
+                        {%endif%}
+                        {% endfor %}
+                    </ul>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="reg_lname" class="col-sm-2 col-form-label">Last Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="last_name" class="form-control" id="reg_lname">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        {% if "last_name_error" in message.tags %}
+                        <li class="text-danger">{{ message }}</li>
+                        {%endif%}
+                        {% endfor %}
+                    </ul>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="reg_password" class="col-sm-2 col-form-label">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" name="reg_password" class="form-control" id="reg_password">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        {% if "reg_password_error" in message.tags %}
+                        <li class="text-danger">{{ message }}</li>
+                        {%endif%}
+                        {% endfor %}
+                    </ul>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="reg_email" class="col-sm-2 col-form-label">Confirm Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" name="confirm_password" class="form-control" id="confirm_password">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        {% if "reg_password_error" in message.tags %}
+                        <li class="text-danger">{{ message }}</li>
+                        {%endif%}
+                        {% endfor %}
+                    </ul>
+                    {%endif%}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary float-right">Register</button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <p class="float-right"><a href="/signin/">Already have an account? Login</a></p>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        $('#reg_email').keyup(function (event) {
+            event.preventDefault();
+            var data = $("#reg_form").serialize()
+            $.post(
+                "/registrationVal/", data,
+                function (serverResponse) {
+                    $("#registrationMsg").html(serverResponse)
+                }
+            )
+        })
+    </script>
+</body>
+
+</html>

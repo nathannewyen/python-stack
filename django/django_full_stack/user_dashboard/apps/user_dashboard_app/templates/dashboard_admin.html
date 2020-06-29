@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Test App</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/signout/" class="nav-link text-primary">Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Nav -->
+
+    <div class="container-fluid">
+        <div class="admin_dashboard">
+            <div class="manage">
+                <h3>Manage User</h3>
+                {% if admin <= 2%}
+                <button type="button" class="btn btn-primary float-right shadow">
+                    <a class="text-light text-decoration-none" href="/users/new/">Add new</a>
+                </button>
+                {% endif %}
+            </div>
+            <div class="admin-info">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Created At</th>
+                            <th>User Level</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for admin in all_admins %}
+                        <tr>
+                            <td>{{admin.first_name}}</td>
+                            <td>{{admin.email}}</td>
+                            <td>{{admin.created_at}}</td>
+                            <td>Admin</td>
+                            <td class="text-monospace">
+                                <a href="#">Edit</a>
+                                <a href="#">Remove</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="user_dashboard">
+            <div class="manage">
+                <h3>Manage User</h3>
+            </div>
+            <div class="admin-info">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Created At</th>
+                            <th>User Level</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in all_users %}
+                        <tr>
+                            <td><a href="/user/{{user.id}}/">{{user.first_name}} {{user.last_name}} </a></td>
+                            <td> {{user.email}} </td>
+                            <td> {{user.created_at}} </td>
+                            <td> Normal </td>
+                            <td class="text-monospace">
+                                <a href="/users/edit/{{user.id}}">Edit</a>
+                                <a href="/dashboard/admin/remove/{{user.id}}">Remove</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-primary float-right">
+                    <a class="text-light text-decoration-none" href="/dashboard/"> Go back </a>
+                </button>
+            </div>
+        </div>
+</body>
+
+</html>

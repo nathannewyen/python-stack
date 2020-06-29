@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <title>{{user.first_name}} Information</title>
+</head>
+
+<body>
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Test App</a>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/dashboard/">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="/signout/" class="nav-link text-primary">Sign out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- End Nav -->
+
+  <div class="container text-light user-info">
+    <h3>{{user.first_name}} {{user.last_name}}</h3>
+    <div class="information">
+      <p>Register at: {{user.created_at}}</p>
+      <p>User ID: {{user.id}}</p>
+      <p>Email address: {{user.email}}</p>
+      {% if not user.description %}
+      <p>
+        No description yet:
+        <button type="submit" class="btn btn-primary">
+          <a href="/users/edit/{{user.id}}/" class="text-light"> Edit</a>
+        </button>
+      </p>
+      {% else %}
+      <p>Description: {{user.description}}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="container leave-messages text-light">
+    <h4>Leave messages for {{user.first_name}} {{user.last_name}}</h4>
+    <div class="form-group clearfix">
+      <form action="/user/{{user.id}}/postmessage/" method="post">
+        {% csrf_token %}
+        <textarea class="form-control" name="post_message" id="post_message" rows="5"></textarea>
+        <button type="submit" class="btn btn-primary float-right">
+          Post
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container text-light clearfix">
+    <div class="messages_info">
+      {% if message_data %}
+      {% for message in message_data %}
+      {% if message.user_message.id == user_id %}
+      <h5>
+        {{message.user_message.first_name}} {{message.user_message.last_name}}
+        wrote:
+      </h5>
+      <p class="time_post float-right"><i> {{message.whenpublished}} </i></p>
+      <p class="messages_show bg-light text-dark">
+        {{message.message}} {% if message.user_message.id == user_id %}
+        <a href="/user/{{user.id}}/deletemessage/{{message.id}}/" class="text-danger float-right">
+          Delete Comment
+        </a>
+        {%endif%}
+      </p>
+      <div class="comment_info clearfix">
+        {% if comment_data %}
+        {% for comment in comment_data %}
+        {% if comment.message_id.id == message.id %}
+        <p class="user_comment">
+          {{comment.user_comment.first_name}}
+          {{comment.user_comment.last_name}} wrote:
+        </p>
+        <p class="time_comment float-right">
+          <i> {{comment.comment_whenpublished}} </i>
+        </p>
+        <p class="comment_show bg-light text-dark">
+          {{comment.comment}} {% if comment.user_comment.id == user.id %}
+          <a href="/user/{{user.id}}/deletecomment/{{comment.id}}/" class="text-danger float-right">
+            Delete Comment
+          </a>
+          {% endif %}
+        </p>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <form action="/user/{{user.id}}/postcomment/" method="post">
+          {% csrf_token %}
+          <input type="hidden" value="{{message.id}}" name="message_id" />
+          <textarea class="form-control" name="post_comment" id="post_comment" rows="3"
+            placeholder="write a message"></textarea>
+          <button type="submit" class="btn btn-primary float-right">
+            Post
+          </button>
+        </form>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</body>
+
+</html>

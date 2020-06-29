@@ -1,0 +1,123 @@
+body {
+  background-color: #202020 !important;
+}
+
+table {
+  color: #ffffff !important;
+}
+
+/* Landing Page */
+.container {
+  margin-top: 20px;
+}
+
+.container .welcome {
+  padding: 60px;
+}
+
+.container .options {
+  margin-top: 20px;
+}
+
+/* Admin - Dashboard */
+.admin_dashboard {
+  padding: 60px;
+}
+
+.admin_dashboard .manage h3,
+button {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+/* User- Dashboard */
+
+.user_dashboard {
+  padding: 60px;
+}
+
+.user_dashboard .manage h3,
+button {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+/* User Profile Edit */
+
+.update_information h3 {
+  padding: 20px 20px 0px 20px;
+}
+
+.update_information .row {
+  padding: 20px;
+}
+
+fieldset {
+  margin-top: 10px !important;
+  padding: 10px !important;
+}
+
+legend {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 5px 5px 10px !important;
+  background-color: #ffffff;
+}
+
+.update_information textarea {
+  resize: none;
+}
+
+.update_information .update_desc button {
+  margin-top: 10px;
+}
+
+/* User Info Page */
+.user-info h3 {
+  margin-top: 20px;
+}
+
+.leave-messages textarea {
+  resize: none;
+}
+
+.leave-messages button {
+  margin-top: 10px;
+}
+
+.messages_info {
+  padding: 0px 0px 0px 60px;
+}
+
+.messages_info h5,
+.time_post {
+  display: inline-block;
+}
+
+.messages_info .messages_show {
+  height: 60px;
+  padding: 10px;
+}
+
+.messages_info .comment_info .user_comment,
+.time_comment {
+  display: inline-block;
+}
+
+.messages_info .comment_info {
+  padding: 0px 0px 0px 60px;
+}
+
+.messages_info .comment_info button {
+  margin-top: 10px;
+}
+
+.messages_info .comment_show {
+  padding: 5px;
+}
+
+.messages_info .comment_info textarea {
+  resize: none;
+}
+
+/* User Register Page */

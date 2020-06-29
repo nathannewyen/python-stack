@@ -1,0 +1,85 @@
+body {
+    padding: 20px;
+}
+
+.messages {
+    list-style-type: none;
+}
+
+/* Shows Info Template */
+.shows-info .table {
+    margin-top: 40px;
+}
+
+.shows-info .add-show {
+    margin-top: 30px;
+}
+
+/* End of Shows Info Template */
+
+/* Add Show Template */
+.add-show .container h1 {
+    padding: 20px 0px;
+}
+
+.add-show .goback {
+    float: right;
+}
+
+.add-show .form-group .network,
+.releasedate {
+    display: inline-block;
+    width: 45%;
+}
+
+.add-show .releasedate {
+    margin-left: 9.5%;
+}
+
+.add-show .container #input-description {
+    resize: none;
+}
+
+.add-show .container #createbtn {
+    padding: 10px 35px;
+}
+
+/* End of Add Show Template */
+
+/* Single Show Info */
+.single-show-info .info {
+    margin-top: 5%;
+}
+
+.single-show-info .edit {
+    margin-top: 40%;
+}
+
+.single-show-info .goback {
+    float: right;
+}
+
+.single-show-info .update,
+a {
+    padding: 0px 20px;
+}
+
+/* End of Single Show Info */
+
+/* Edit Show Template */
+
+.edit-show .form-group .network,
+.releasedate {
+    display: inline-block;
+    width: 45%;
+}
+
+.edit-show .releasedate {
+    margin-left: 9.5%;
+}
+
+.edit-show .goback {
+    float: right;
+}
+
+/* End of Edit Show Template */

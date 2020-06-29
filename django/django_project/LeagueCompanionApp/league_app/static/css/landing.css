@@ -1,0 +1,50 @@
+html {
+    height: 100%;
+    border: 2 px dashed red;
+
+}
+
+#mainNavbar {
+    text-decoration: underline;
+    background-color:#0b0b23;
+    opacity: 0.8;
+    
+}
+
+#mainNavbar a {
+    color: white;
+    text-transform: capitalize;
+}
+
+body {
+    height: 100%;
+    background-color: black;
+    background-image: url(https://i.pinimg.com/originals/6f/93/50/6f93508f78319faf2a9929632b3fc041.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    
+}
+body img{
+    width: 100%;
+    height: auto;
+}
+
+.description{
+    color: white;
+    text-align: center;
+}
+
+.container{
+    width: 35%;
+    height: 45%;
+    margin-bottom: 2%;
+    margin-top: 100px;
+}
+
+h3 a {
+    color: white;
+}
+
+div img {
+    border-radius: 2em;
+}

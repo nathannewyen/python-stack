@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap linked -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <title>Welcome {{loggedinUser.firstname}} {{loggedinUser.lastname}}</title>
+</head>
+
+<body>
+
+
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0">
+        <a href="/" class="navbar-brand">League Companion</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                <li class="nav-item">
+                    <a href="" class="nav-link">{{loggedinUser.firstname}} {{loggedinUser.lastname}}</a>
+                </li>
+                </li>
+                <a href="https://play.na.leagueoflegends.com/en_US" class="nav-link">Play Today!</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/champions/" class="nav-link">Champions</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout/" class="nav-link">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid">
+        <h2>{{loggedinUser.firstname}} {{loggedinUser.lastname}} Favorite Champions:</h2>
+        {% for champs in favorite_champs %}
+        {% for champ in champ_data %}
+        {% if champs.name == champ.id %}
+        <div class="user-champ-favorite">
+            <p><a href="/champions/{{champ.id}}">
+                    <img src="http://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/{{champ.image.full}}"
+                        alt="{{champ.image.full}}">
+            </p>{{champs.name}}</a></p>
+            <p><a href="/user/{{loggedinUser.id}}/remove/{{champ.id}}/" class="text-danger">Remove</a></p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+
+
+
+</body>
+
+</html>

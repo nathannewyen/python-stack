@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title> Wall</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"> CodingDojo Wall</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+            </ul>
+            <span> Welcome {{first_name}} {{last_name}} </span>
+            <form action="/logout/" method="POST" class="form-inline my-2 my-lg-0">
+                {% csrf_token %}
+                <button class="btn text-primary" type="submit">Log out</button>
+            </form>
+        </div>
+    </nav>
+    <!-- End of Navbar -->
+
+
+    <div class="container">
+
+        <!-- Post a message -->
+        <div class="post-a-message">
+            <form action="/message/" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="postcomment">
+                        <h3>Post Comment</h3>
+                    </label>
+                    <textarea class="form-control text-post-comment" name="post_message" id="post-message"
+                        rows="5"></textarea>
+                    <button type="submit" class="btn btn-primary post-message-btn float-right shadow">Post a
+                        message</button>
+                </div>
+            </form>
+
+            <!-- Post a message -->
+            <div class="post-a-comment">
+                {% if post_data %}
+                {% for post in post_data %}
+                <h4 class="text-primary">{{post.user_id.first_name}} {{post.user_id.last_name}} <span
+                        class="text-dark small">
+                        {{post.user_id.created_at}} </span></h4>
+
+                <div class="message-info">
+                    <p class="message text-justify">{{post.message}}</p>
+
+                    {% if comment_data %}
+                    {% for comment in comment_data %}
+                    {% if comment.message_id.id == post.id %}
+                    <h5 class="text-success user-comment">{{comment.user_id.first_name}} {{comment.user_id.last_name}}
+                        <span class="text-dark small"> {{comment.user_id.created_at}}</span>
+                    </h5>
+                    <p class="my-comment text-justify ">{{comment.comment}}</p>
+                    {% if comment.user_id.id == user_id %}
+                    <a href="/delete_comment/{{comment.id}}" class="text-danger">
+                        Delete Comment
+                    </a>
+                    {%endif%}
+
+                    {%endif%}
+                    {%endfor%}
+                    {%endif%}
+                    <form action="/comment/" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group clearfix">
+                            <input type="hidden" value={{post.id}} name="message_id">
+                            <textarea class="form-control text-post-comment " name="comment" id="postcomment"
+                                rows="3"></textarea>
+                            <button type="submit"
+                                class="btn btn-sm btn-success post-comment-btn shadow float-right">Post a
+                                comment
+                            </button>
+                        </div>
+                    </form>
+                    {%endfor%}
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Post a message -->
+
+
+
+
+
+
+
+
+</body>
+
+</html>
